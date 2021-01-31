@@ -23,5 +23,4 @@ jobs:
       run: |
         pip install requests
         pip install pillow
-        echo "${{ secrets.SECRET_INFO }}"
         echo "${{ secrets.SECRET_INFO }}" | python3 ./ClockIn.py
