@@ -22,4 +22,4 @@ jobs:
     - name: Clock In
       run: |
         pip install requests
-        echo ${{ secrets.SECRET_INFO }} | python ClockIn.py
+        echo "${{ secrets.SECRET_INFO }}" | python ClockIn.py
