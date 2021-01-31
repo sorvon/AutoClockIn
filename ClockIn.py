@@ -2,6 +2,7 @@
 from CodeVerify import VerificationCode
 import requests
 import json
+import logging
 
 
 class ClockIn:
@@ -51,12 +52,17 @@ class ClockIn:
             response = requests.post(url='https://fangkong.hnu.edu.cn/api/v1/clockinlog/add', data=json.dumps(postBody),
                                      headers=postHeaders)
         print(response.json())
+        logging.info(response.json())
         return response.json()['code']
         # {'code': 0, 'data': None, 'msg': '成功'}
         # {'code': 1, 'data': None, 'msg': '今天已提交过打卡信息！'}
 
 
 if __name__ == '__main__':
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s %(levelname)s %(message)s',
+        datefmt='%Y-%m-%dT%H:%M:%S')
     secret_info_dict = json.loads(input())
     re_code = -1
     for i in range(0, 10):
