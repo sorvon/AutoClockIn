@@ -23,4 +23,4 @@ jobs:
       run: |
         pip install requests
         pip install PIL
-        echo "${{ secrets.SECRET_INFO }}" | python ClockIn.py
+        echo "${{ secrets.SECRET_INFO }}" | python ./ClockIn.py
