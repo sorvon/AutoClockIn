@@ -4,7 +4,10 @@ import requests
 import json
 import logging
 
-
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s %(levelname)s %(message)s',
+    datefmt='%Y-%m-%dT%H:%M:%S')
 class ClockIn:
     def __init__(self, secret_info: dict):
         self.secret_info = secret_info
@@ -59,15 +62,12 @@ class ClockIn:
 
 
 if __name__ == '__main__':
-    logging.basicConfig(
-        level=logging.INFO,
-        format='%(asctime)s %(levelname)s %(message)s',
-        datefmt='%Y-%m-%dT%H:%M:%S')
     secret_info_dict = json.loads(input())
     re_code = -1
     for i in range(0, 10):
         clockIn = ClockIn(secret_info_dict)
         re_code = clockIn.login()
+        logging.info(re_code)
         if re_code == 0:
             exit(0)
         elif re_code == 1:
