@@ -5,8 +5,8 @@ name: Upload Python Package
 
 on:
   workflow_dispatch:
-  # schedule:
-    # - cron: "0 16-18 * * *"
+  schedule:
+    - cron: "0 16-18 * * *"
 
 jobs:
   deploy:
@@ -23,4 +23,4 @@ jobs:
       run: |
         pip install requests
         pip install pillow
-        echo '${{ secrets.SECRET_INFO }}' | python3 ./ClockIn.py
+        echo '${{ secrets.IN_SCHOOL_INFO }}' | python3 ./ClockIn.py
